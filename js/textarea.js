@@ -1,4 +1,6 @@
 var Textarea = function(targetId) {
+	var _self = this;
+
 	targetId = targetId || 'textarea';
 	this.target = document.getElementById(targetId);
 	
@@ -9,12 +11,12 @@ var Textarea = function(targetId) {
 	this.defaults = {
 		flip: false,
 		color: '#00ff00',
-		speedFactor: 5000, //It's actually value of miliseconds needed to scroll whole screen
-		fontSizePx: 80,
-		lineHeight: 1.5
+		speedFactor: 8000, //It's actually value of miliseconds needed to scroll whole screen
+		fontSizePx: 100,
+		lineHeight: 2
 	};
 	
-	
+	//Import settings
 	Prompter.settings.textarea = $.extend(this.defaults, Prompter.settings.textarea);
 	this.settings = Prompter.settings.textarea;
 	
@@ -25,20 +27,22 @@ var Textarea = function(targetId) {
 		'font-size': this.settings.fontSizePx + 'px',
 		'line-height': this.settings.fontSizePx * this.settings.lineHeight + 'px'
 	});
-	if(this.settings.flip) {
-		$(this.target).addClass('flip');
-	}
+	if(this.settings.flip) { $(this.target).addClass('flip'); }
 	
-	
-	this._getScrollTime = function() {		
-		var scrollLeft = this.target.scrollHeight - $(this.target).scrollTop(); //Pixels left to scroll
-		var height = $(this.target).height();
-		var scrollTime = scrollLeft / height * this.settings.speedFactor;
-		
-		return scrollTime;
-	};
+	//Stop on user interaction
+	$(this.target).on('touchstart', function() {
+		_self.pause();
+	});
 	
 	console.log("Textarea initialized");
+};
+	
+Textarea.prototype._getScrollTime = function() {		
+	var scrollLeft = this.target.scrollHeight - $(this.target).scrollTop(); //Pixels left to scroll
+	var height = $(this.target).height();
+	var scrollTime = scrollLeft / height * this.settings.speedFactor;
+	
+	return scrollTime;
 };
 
 Textarea.prototype.toggleFlip = function() {
@@ -56,7 +60,7 @@ Textarea.prototype.start = function() {
 	
 	$(this.target).animate(
 		{
-			scrollTop: $(this.target).get(0).scrollHeight
+			scrollTop: this.target.scrollHeight
 		},
 		this._getScrollTime(),
 		'linear'
