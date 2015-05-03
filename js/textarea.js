@@ -11,9 +11,9 @@ var Textarea = function(targetId) {
 	this.defaults = {
 		flip: false,
 		color: '#00ff00',
-		speedFactor: 8000, //It's actually value of miliseconds needed to scroll whole screen
+		speedFactor: 7000, //It's actually value of miliseconds needed to scroll whole screen
 		fontSizePx: 100,
-		lineHeight: 2
+		lineHeight: 1.8
 	};
 	
 	//Import settings
@@ -51,7 +51,9 @@ Textarea.prototype.toggleFlip = function() {
 };
 
 Textarea.prototype.loadText = function(text) {
-	this.stop();	
+	this.stop();
+	text = text.replace(new RegExp('\r?\n','g'), '<br>');
+	
 	$(this.target).html(text);
 };
 

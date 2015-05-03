@@ -10,15 +10,20 @@ $(function(){
 	}
 	
 	if(typeof Storage.prompter === 'undefined') {
-		Storage.prompter = {};
+		Storage.prompter = {
+			text: "Welcome to OpenPrompter!\n\nHave you ever thought how news station presenters memorize all that information? Well, they don't - it's just teleprompter magic.\n\nTelemprompter is a device displaying scrolling text, read by someone in front of camera. Typicaly teleprompters are specialized, and rather expensive devices used by pros, but any tablet and piece of glass works as well.\nThe only missing part is application - simple, reliable, and of course free. That's why OpenPromtper born - use it anytime and anywhere.\n\nRemember to adjust speed and sizes to your needs. You can also change colors."
+		};
 	}
 	
-	Prompter.settings = new Settings();
+	Prompter.settings = Storage.prompter;
 	Prompter.textarea = new Textarea();
 	
 	globalLoader.stop();
 	console.log("** Application ready **");
 	
-	Prompter.textarea.loadText('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis luctus, risus eget ullamcorper suscipit, lectus magna laoreet sapien, sed ornare nulla est ac augue. Fusce mattis sagittis sapien congue mollis. Donec magna ligula, porta in nisl eleifend, imperdiet tincidunt arcu. Morbi scelerisque libero non risus vehicula, et maximus lacus venenatis. Vestibulum venenatis a metus at feugiat. In faucibus neque vulputate, mattis ligula at, varius dui. Donec in malesuada neque. Curabitur lobortis laoreet tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur sit amet suscipit dui, a vestibulum tellus. Proin id viverra ipsum, consectetur aliquam odio. Donec facilisis, libero nec dapibus pulvinar, leo nulla varius elit, nec efficitur odio est vitae lacus. Donec turpis nibh, pellentesque eget maximus feugiat, suscipit non urna. Nulla facilisi.');
+	Prompter.textarea.loadText(Prompter.settings.text); //Load last text
+	
+	//Menu controls
+	
 });
 

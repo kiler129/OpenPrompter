@@ -49,11 +49,3 @@ button {
 	height: 90%;
 	display: block;
 }
-
-#prompterUi button > i {
-	display: block;
-}
-
-#prompterUi button > span {
-/* 	font-size: ; */
-}
