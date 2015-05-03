@@ -10,12 +10,25 @@ var Textarea = function(targetId) {
 		flip: false,
 		color: '#00ff00',
 		speedFactor: 5000, //It's actually value of miliseconds needed to scroll whole screen
-		fontSizePx: 80		
+		fontSizePx: 80,
+		lineHeight: 1.5
 	};
 	
 	
 	Prompter.settings.textarea = $.extend(this.defaults, Prompter.settings.textarea);
 	this.settings = Prompter.settings.textarea;
+	
+	//Setting textarea styles
+	$(this.target).css({
+		'background': this.settings.background,
+		'color': this.settings.color,
+		'font-size': this.settings.fontSizePx + 'px',
+		'line-height': this.settings.fontSizePx * this.settings.lineHeight + 'px'
+	});
+	if(this.settings.flip) {
+		$(this.target).addClass('flip');
+	}
+	
 	
 	this._getScrollTime = function() {		
 		var scrollLeft = this.target.scrollHeight - $(this.target).scrollTop(); //Pixels left to scroll

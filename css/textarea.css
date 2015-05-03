@@ -5,3 +5,11 @@
 	-ms-transform: scale(-1, 1);
 	transform: scale(-1, 1);
 }
+
+#textarea {
+	overflow-y: scroll;
+}
+
+#textarea > div {
+	overflow: hidden;
+}
