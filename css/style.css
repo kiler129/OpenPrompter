@@ -1,0 +1,35 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+* {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select:none;
+	user-select:none;
+	-o-user-select:none;
+}
+
+#loading, #textarea {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#textarea {
+	overflow-y: scroll;
+}
+
+#textarea > div {
+	overflow: hidden;
+}
+
+button {
+	
+}
+
