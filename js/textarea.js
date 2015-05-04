@@ -1,12 +1,9 @@
-var Textarea = function(targetId) {
+var Textarea = function(parent, targetId) {
+	this.prompter = parent || this.prompter;
 	var _self = this;
 
 	targetId = targetId || 'textarea';
 	this.target = document.getElementById(targetId);
-	
-	if(typeof Prompter.settings.textarea === 'undefined') {
-		Prompter.settings.textarea = {};		
-	}
 	
 	this.defaults = {
 		flip: false,
@@ -17,8 +14,12 @@ var Textarea = function(targetId) {
 	};
 	
 	//Import settings
-	Prompter.settings.textarea = $.extend(this.defaults, Prompter.settings.textarea);
-	this.settings = Prompter.settings.textarea;
+	if(typeof this.prompter.settings.textarea === 'undefined') {
+		this.prompter.settings.textarea = {};
+	}
+	var settings = $.extend(true, this.defaults, this.prompter.settings.textarea);
+	this.prompter.settings.textarea = settings;
+	this.settings = this.prompter.settings.textarea;
 	
 	//Setting textarea styles
 	$(this.target).css({
@@ -48,6 +49,7 @@ Textarea.prototype._getScrollTime = function() {
 Textarea.prototype.toggleFlip = function() {
 	this.settings.flip = !this.settings.flip;
 	$(this.target).toggleClass('flip');
+	this.prompter.saveState();
 };
 
 Textarea.prototype.loadText = function(text) {
