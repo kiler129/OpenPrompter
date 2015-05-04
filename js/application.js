@@ -27,16 +27,14 @@ $(function() {
 	
 		console.log(localStorage.prompter);
 
-	//try {
+	try {
 		Prompter = new Prompter();
 		Prompter.textarea.loadText(Prompter.settings.text); //Load last text
 				
-	/*
-} catch(err) {
+	} catch(err) {
 		globalLoader.destroy();
 		new FatalModal('Application error', err.message);
 	}
-*/
 	console.log(localStorage.prompter);
 
 	Prompter.saveState();
