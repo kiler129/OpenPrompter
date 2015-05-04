@@ -25,8 +25,6 @@ $(function() {
 	console.log('** Starting application **');
 	var globalLoader = new Loader('loading');
 	
-		console.log(localStorage.prompter);
-
 	try {
 		Prompter = new Prompter();
 		Prompter.textarea.loadText(Prompter.settings.text); //Load last text
@@ -35,10 +33,7 @@ $(function() {
 		globalLoader.destroy();
 		new FatalModal('Application error', err.message);
 	}
-	console.log(localStorage.prompter);
-
 	Prompter.saveState();
-		console.log(localStorage.prompter);
 
 	console.log("** Application ready **");
 	globalLoader.stop();
