@@ -30,7 +30,7 @@ Settings.prototype.saveState = function () {
     localStorage.setItem(this.storageKey, JSON.stringify(this.settingsStorage));
 };
 
-Settings.prototype.get = function(name) {
+Settings.prototype.get = function (name) {
     if (typeof name) {
         throw 'Failed to get item - no name specified!';
     }

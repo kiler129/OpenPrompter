@@ -1,5 +1,5 @@
-var Prompter = function() {
-	console.log('Initializing modules');
+var Prompter = function () {
+    console.log('Initializing modules');
     this.settingsStorage = new Settings('prompter');
     this.screen = new Screen(this.settingsStorage);
     this.textarea = new Textarea(this.settingsStorage);
@@ -9,25 +9,25 @@ var Prompter = function() {
     });
 };
 
-$(function() {
-	console.log('** Starting application **');
-	var globalLoader = new Loader('loading');
-	
-	try {
-		Prompter = new Prompter();
-		Prompter.textarea.loadText(Prompter.settings.text); //Load last text
-				
-	} catch(err) {
-		globalLoader.destroy();
-		new FatalModal('Application error', err.message);
-	}
+$(function () {
+    console.log('** Starting application **');
+    var globalLoader = new Loader('loading');
 
-	console.log("** Application ready **");
-	globalLoader.stop();
-	
-	//Menu controls
-	$(".flipTrigger").click(function(){
-		Prompter.screen.toggleFlip();
-	});
+    try {
+        Prompter = new Prompter();
+        Prompter.textarea.loadText(Prompter.settings.text); //Load last text
+
+    } catch (err) {
+        globalLoader.destroy();
+        new FatalModal('Application error', err.message);
+    }
+
+    console.log("** Application ready **");
+    globalLoader.stop();
+
+    //Menu controls
+    $(".flipTrigger").click(function () {
+        Prompter.screen.toggleFlip();
+    });
 });
 
