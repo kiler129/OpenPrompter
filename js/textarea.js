@@ -41,15 +41,8 @@ var Textarea = function(parent, targetId) {
 Textarea.prototype._getScrollTime = function() {		
 	var scrollLeft = this.target.scrollHeight - $(this.target).scrollTop(); //Pixels left to scroll
 	var height = $(this.target).height();
-	var scrollTime = scrollLeft / height * this.settings.speedFactor;
-	
-	return scrollTime;
-};
 
-Textarea.prototype.toggleFlip = function() {
-	this.settings.flip = !this.settings.flip;
-	$(this.target).toggleClass('flip');
-	this.prompter.saveState();
+	return (scrollLeft / height * this.settings.speedFactor);
 };
 
 Textarea.prototype.loadText = function(text) {
