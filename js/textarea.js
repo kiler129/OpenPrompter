@@ -1,25 +1,17 @@
-var Textarea = function(parent, targetId) {
+var Textarea = function(settings, targetId) {
 	this.prompter = parent || this.prompter;
 	var _self = this;
 
 	targetId = targetId || 'textarea';
 	this.target = document.getElementById(targetId);
-	
-	this.defaults = {
+
+    this.settings = settings.extend('textarea', {
 		flip: false,
 		color: '#00ff00',
 		speedFactor: 7000, //It's actually value of miliseconds needed to scroll whole screen
 		fontSizePx: 100,
 		lineHeight: 1.8
-	};
-	
-	//Import settings
-	if(typeof this.prompter.settings.textarea === 'undefined') {
-		this.prompter.settings.textarea = {};
-	}
-	var settings = $.extend(true, this.defaults, this.prompter.settings.textarea);
-	this.prompter.settings.textarea = settings;
-	this.settings = this.prompter.settings.textarea;
+	});
 	
 	//Setting textarea styles
 	$(this.target).css({

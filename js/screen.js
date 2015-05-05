@@ -1,26 +1,21 @@
-var Screen = function(parent, targetId) {
-    this.prompter = parent || this.prompter;
-
+var Screen = function(settings, targetId) {
     targetId = targetId || 'screen';
+
     this.target = $('#' + targetId);
     if(typeof this.target === 'undefined') {
         throw 'Screen init on #' + targetId + ' failed - no such object';
     }
 
-    this.defaults = {
+    this.settings = settings.extend('screen', {
         flip: false,
         background: '#000'
-    };
+    });
 
-    //Import settings
-    if(typeof this.prompter.settings.screen === 'undefined') {
-        this.prompter.settings.screen = {};
-    }
-    this.prompter.settings.screen = $.extend(true, this.defaults, this.prompter.settings.screen);
-    this.settings = this.prompter.settings.screen;
 
     $(this.target).css('background', this.settings.background);
-    if(this.settings.flip) { this._enableFlip(); }
+    if(this.settings.flip) {
+        this._enableFlip();
+    }
 
     console.log("Screen initialized");
 };
@@ -31,6 +26,8 @@ Screen.prototype._enableFlip = function() {
     $('*', this.target).each(function() {
         $(this).addClass('flip');
     });
+
+    document.dispatchEvent(new Event('settings.persist'));
 };
 
 Screen.prototype._disableFlip = function() {
@@ -39,6 +36,8 @@ Screen.prototype._disableFlip = function() {
     $('*', this.target).each(function() {
         $(this).removeClass('flip');
     });
+
+    document.dispatchEvent(new Event('settings.persist'));
 };
 
 Screen.prototype.toggleFlip = function() {
@@ -47,6 +46,4 @@ Screen.prototype.toggleFlip = function() {
     } else {
         this._enableFlip();
     }
-
-    document.dispatchEvent(new Event('app.save_state'));
 };
