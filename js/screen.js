@@ -34,7 +34,7 @@ var Screen = function (settings, targetId) {
 Screen.prototype._enableFlip = function () {
     this.settings.flip = true;
 
-    $('*', this.target).each(function () {
+    $(this.target).children().each(function () {
         $(this).addClass('flip');
     });
 
@@ -44,7 +44,7 @@ Screen.prototype._enableFlip = function () {
 Screen.prototype._disableFlip = function () {
     this.settings.flip = false;
 
-    $('*', this.target).each(function () {
+    $(this.target).children().each(function () {
         $(this).removeClass('flip');
     });
 
