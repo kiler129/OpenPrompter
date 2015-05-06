@@ -2,6 +2,7 @@ var Prompter = function () {
     console.log('Initializing modules');
     this.settingsStorage = new Settings('prompter');
     this.screen = new Screen(this.settingsStorage);
+    this.preloader = new Preloader(this.settingsStorage);
     this.textarea = new Textarea(this.settingsStorage);
 
     this.settings = this.settingsStorage.extend('prompter', {

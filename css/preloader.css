@@ -1,0 +1,9 @@
+#preloader {
+    display: table;
+}
+
+.preloaderTextTarget {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
