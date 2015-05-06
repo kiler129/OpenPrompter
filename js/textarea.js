@@ -6,23 +6,8 @@ var Textarea = function (settings, targetId) {
     this.target = document.getElementById(targetId);
 
     this.settings = settings.extend('textarea', {
-        flip: false,
-        color: '#00ff00',
         speedFactor: 7000, //It's actually value of miliseconds needed to scroll whole screen
-        fontSizePx: 100,
-        lineHeight: 1.8
     });
-
-    //Setting textarea styles
-    $(this.target).css({
-        'background': this.settings.background,
-        'color': this.settings.color,
-        'font-size': this.settings.fontSizePx + 'px',
-        'line-height': this.settings.fontSizePx * this.settings.lineHeight + 'px'
-    });
-    if (this.settings.flip) {
-        $(this.target).addClass('flip');
-    }
 
     //Stop on user interaction
     $(this.target).on('touchstart', function () {

@@ -8,7 +8,18 @@ var Screen = function (settings, targetId) {
 
     this.settings = settings.extend('screen', {
         flip: false,
-        background: '#000'
+        background: '#000',
+        color: '#00ff00',
+        fontSizePx: 100,
+        lineHeight: 1.8
+    });
+
+    //Setting textarea styles
+    $(this.target).css({
+        'background': this.settings.background,
+        'color': this.settings.color,
+        'font-size': this.settings.fontSizePx + 'px',
+        'line-height': this.settings.fontSizePx * this.settings.lineHeight + 'px'
     });
 
 
