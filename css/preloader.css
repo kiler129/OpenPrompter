@@ -1,4 +1,6 @@
 #preloader {
+    z-index: 1;
+    background: inherit;
     display: table;
 }
 

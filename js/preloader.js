@@ -3,6 +3,8 @@ var Preloader = function (settings, targetId) {
 
     targetId = targetId || 'preloader';
     this.target = document.getElementById(targetId);
+    $(this.target).hide(0);
+
     this.textTarget = $('<div/>')
         .addClass('preloaderTextTarget')
         .appendTo(this.target);
