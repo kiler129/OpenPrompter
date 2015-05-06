@@ -6,7 +6,7 @@ var Textarea = function (settings, targetId) {
     this.target = document.getElementById(targetId);
 
     this.settings = settings.extend('textarea', {
-        speedFactor: 7000, //It's actually value of miliseconds needed to scroll whole screen
+        speedFactor: 7000 //It's actually value of miliseconds needed to scroll whole screen
     });
 
     //Stop on user interaction
@@ -45,9 +45,9 @@ Textarea.prototype.start = function () {
 
 Textarea.prototype.pause = function () {
     $(this.target).stop(true);
-}
+};
 
 Textarea.prototype.stop = function () {
     this.pause();
     $(this.target).animate({scrollTop: 0}, 0);
-}
+};
