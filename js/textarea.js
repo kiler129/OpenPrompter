@@ -1,5 +1,4 @@
 var Textarea = function (settings, targetId) {
-    this.prompter = parent || this.prompter;
     var _self = this;
 
     targetId = targetId || 'textarea';

@@ -1,6 +1,4 @@
 var Preloader = function (settings, targetId) {
-    this.prompter = parent || this.prompter;
-
     targetId = targetId || 'preloader';
     this.target = document.getElementById(targetId);
     $(this.target).hide(0);
