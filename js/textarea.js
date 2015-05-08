@@ -40,13 +40,19 @@ Textarea.prototype.start = function () {
         this._getScrollTime(),
         'linear'
     );
+
+    document.dispatchEvent(new Event('textarea.start'));
 };
 
 Textarea.prototype.pause = function () {
     $(this.target).stop(true);
+
+    document.dispatchEvent(new Event('textarea.pause'));
 };
 
 Textarea.prototype.stop = function () {
-    this.pause();
+    $(this.target).stop(true);
     $(this.target).animate({scrollTop: 0}, 0);
+
+    document.dispatchEvent(new Event('textarea.stop'));
 };
