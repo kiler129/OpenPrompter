@@ -9,7 +9,7 @@
     <meta name="format-detection" content="telephone=no">
 
     <title>OpenPrompt</title>
-	
+
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/screen.css">
 	<link rel="stylesheet" href="css/preloader.css">
@@ -22,7 +22,18 @@
 	<div id="loading" class="fullscreen"></div>
 
 	<div id="menu">
-        <div class="icon typcn typcn-document-text" data-action="loadFile"></div>
+        <div class="column">
+            <div class="icon typcn typcn-document-text" data-action="loadFile"></div>
+        </div>
+
+        <div class="column">
+            <div class="icon typcn typcn-media-stop-outline" data-action="stopPrompter"></div>
+            <div class="icon typcn typcn-media-play-outline" data-action="startPrompter"></div>
+            <div class="icon typcn typcn-media-pause-outline hide" data-action="pausePrompter"></div>
+        </div>
+
+        <div class="column">
+        </div>
     </div>
 
 	<div id="screen">
@@ -30,7 +41,7 @@
         <div id="textarea" class="fullscreen"></div>
 	</div>
 
-	<script src="js/spin.min.js"></script>	
+	<script src="js/spin.min.js"></script>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery.easymodal.js"></script>
 	<script src="js/modal.js"></script>

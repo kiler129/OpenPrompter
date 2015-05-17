@@ -49,6 +49,27 @@ Menus.prototype._setupActions = function (prompter) {
     $(this.target).on('click', '*[data-action="loadFile"]', {prompter: prompter}, function (e) {
         e.data.prompter.fileLoader.triggerDialog();
     });
+
+    $(this.target).on('click', '*[data-action="startPrompter"]', {_self: this, prompter: prompter}, function (e) {
+        e.data.prompter.textarea.start();
+        console.log(e.data._self.target);
+
+
+        $('*[data-action="pausePrompter"]', e.data._self.target).removeClass('hide');
+        $('*[data-action="startPrompter"]', e.data._self.target).addClass('hide');
+    });
+
+    $(this.target).on('click', '*[data-action="pausePrompter"]', {_self: this, prompter: prompter}, function (e) {
+        e.data.prompter.textarea.pause();
+        $('*[data-action="startPrompter"]', e.data._self.target).removeClass('hide');
+        $('*[data-action="pausePrompter"]', e.data._self.target).addClass('hide');
+    });
+
+    $(this.target).on('click', '*[data-action="stopPrompter"]', {_self: this, prompter: prompter}, function (e) {
+        e.data.prompter.textarea.stop();
+        $('*[data-action="startPrompter"]', e.data._self.target).removeClass('hide');
+        $('*[data-action="pausePrompter"]', e.data._self.target).addClass('hide');
+    });
 };
 
 Menus.prototype.autoHide = function (state) {

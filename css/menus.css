@@ -20,3 +20,13 @@
     color: #fff;
     float: left;
 }
+
+#menu .column.center div.icon {
+    display: inline-block;
+    float: none;
+}
+
+#menu .column {
+    width: 33.3%;
+    float: left;
+}
