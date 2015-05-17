@@ -38,7 +38,10 @@ Textarea.prototype.start = function () {
             scrollTop: this.target.scrollHeight - $(this.target).height()
         },
         this._getScrollTime(),
-        'linear'
+        'linear',
+        function() {
+            document.dispatchEvent(new Event('textarea.stop'));
+        }
     );
 
     document.dispatchEvent(new Event('textarea.start'));
