@@ -35,7 +35,7 @@ Textarea.prototype.start = function () {
 
     $(this.target).animate(
         {
-            scrollTop: this.target.scrollHeight
+            scrollTop: this.target.scrollHeight - $(this.target).height()
         },
         this._getScrollTime(),
         'linear'
