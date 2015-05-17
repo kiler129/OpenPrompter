@@ -13,7 +13,26 @@ var Textarea = function (settings, targetId) {
         _self.pause();
     });
 
+    this.isRunning = false;
+    this._isRunningInit();
+
     console.log("Textarea initialized");
+};
+
+Textarea.prototype._isRunningInit = function() {
+    var _self = this;
+
+    document.addEventListener('textarea.start', function () {
+        _self.isRunning = true;
+    });
+
+    document.addEventListener('textarea.pause', function () {
+        _self.isRunning = false;
+    });
+
+    document.addEventListener('textarea.stop', function () {
+        _self.isRunning = false;
+    });
 };
 
 Textarea.prototype._getScrollTime = function () {
