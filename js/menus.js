@@ -10,6 +10,7 @@ var Menus = function (settings, prompter, targetId) {
     this.autoHideTimer = false;
 
     this._initAutoHide(prompter);
+    this._setupActions(prompter);
 
     console.log("Menus initialized");
 };
@@ -42,6 +43,12 @@ Menus.prototype._initAutoHide = function (prompter) {
     };
     document.addEventListener('textarea.stop', onStop);
     document.addEventListener('textarea.pause', onStop);
+};
+
+Menus.prototype._setupActions = function (prompter) {
+    $(this.target).on('click', '*[data-action="loadFile"]', {prompter: prompter}, function (e) {
+        e.data.prompter.fileLoader.triggerDialog();
+    });
 };
 
 Menus.prototype.autoHide = function (state) {
