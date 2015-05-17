@@ -40,10 +40,5 @@ $(function () {
 
     console.log("** Application ready **");
     globalLoader.stop();
-
-    //Menu controls
-    $(".flipTrigger").click(function () {
-        Prompter.screen.toggleFlip();
-    });
 });
 
