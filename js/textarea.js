@@ -9,7 +9,7 @@ var Textarea = function (settings, targetId) {
     });
 
     //Stop on user interaction
-    $(this.target).on('touchstart', function () {
+    $(this.target).on('swipe', function () {
         _self.pause();
     });
 
