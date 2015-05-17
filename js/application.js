@@ -12,12 +12,12 @@ var Prompter = function () {
     });
 };
 
-Prompter.prototype.start = function() {
+Prompter.prototype.start = function () {
     var _self = this;
 
-    if(this.settings.preloader) {
-        this.preloader.start(function() {
-           _self.textarea.start();
+    if (this.settings.preloader) {
+        this.preloader.start(function () {
+            _self.textarea.start();
         });
 
     } else {

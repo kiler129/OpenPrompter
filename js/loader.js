@@ -16,23 +16,23 @@ var Loader = function (targetName) {
         zIndex: 2e9, // The z-index (defaults to 2000000000)
         top: '50%', // Top position relative to parent
         left: '50%' // Left position relative to parent
-    }
+    };
 
     this.target = document.getElementById(((typeof targetName === 'undefined') ? targetName : 'loading'));
     this.spinner = new Spinner(spinJsOpts).spin(this.target);
 
     console.log("Loader initialized");
-}
+};
 
 Loader.prototype.stop = function () {
     this.spinner.stop();
-}
+};
 
 Loader.prototype.start = function () {
     this.spinner.spin();
-}
+};
 
 Loader.prototype.destroy = function () {
     this.stop();
     $(this.target).remove();
-}
+};

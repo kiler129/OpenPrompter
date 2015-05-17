@@ -14,19 +14,19 @@ var Menus = function (settings, prompter, targetId) {
     console.log("Menus initialized");
 };
 
-Menus.prototype._initAutoHide = function(prompter) {
+Menus.prototype._initAutoHide = function (prompter) {
     var _self = this;
 
-    $(prompter.textarea.target).on('touchstart click', { prompter: prompter }, function (e) {
+    $(prompter.textarea.target).on('touchstart click', {prompter: prompter}, function (e) {
         _self.show();
 
-        if(_self.settings.enableAutoHide && e.data.prompter.textarea.isRunning) {
+        if (_self.settings.enableAutoHide && e.data.prompter.textarea.isRunning) {
             _self.autoHide(true);
         }
     });
 
     document.addEventListener('textarea.start', function () {
-        if(_self.settings.enableAutoHide) {
+        if (_self.settings.enableAutoHide) {
             _self.autoHide(true);
             _self.hide();
         }
@@ -35,7 +35,7 @@ Menus.prototype._initAutoHide = function(prompter) {
     var onStop = function () {
         _self.show();
 
-        if(_self.settings.enableAutoHide) {
+        if (_self.settings.enableAutoHide) {
             _self.autoHide(false);
             _self.show();
         }
@@ -44,27 +44,27 @@ Menus.prototype._initAutoHide = function(prompter) {
     document.addEventListener('textarea.pause', onStop);
 };
 
-Menus.prototype.autoHide = function(state) {
+Menus.prototype.autoHide = function (state) {
     clearTimeout(this.autoHideTimer);
 
     var _self = this;
-    if(typeof state !== 'undefined' && state) {
+    if (typeof state !== 'undefined' && state) {
         console.log("Menu: enabling autohide");
 
-        this.autoHideTimer = setTimeout(function() {
+        this.autoHideTimer = setTimeout(function () {
             _self.hide();
         }, this.settings.autoHideTime);
     }
 };
 
-Menus.prototype.hide = function() {
+Menus.prototype.hide = function () {
     $(this.target).addClass('hidden');
 };
 
-Menus.prototype.show = function() {
+Menus.prototype.show = function () {
     $(this.target).removeClass('hidden');
 };
 
-Menus.prototype.toggle = function() {
+Menus.prototype.toggle = function () {
     $(this.target).toggleClass('hidden');
 };

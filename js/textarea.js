@@ -19,7 +19,7 @@ var Textarea = function (settings, targetId) {
     console.log("Textarea initialized");
 };
 
-Textarea.prototype._isRunningInit = function() {
+Textarea.prototype._isRunningInit = function () {
     var _self = this;
 
     document.addEventListener('textarea.start', function () {
@@ -58,7 +58,7 @@ Textarea.prototype.start = function () {
         },
         this._getScrollTime(),
         'linear',
-        function() {
+        function () {
             document.dispatchEvent(new Event('textarea.stop'));
         }
     );
