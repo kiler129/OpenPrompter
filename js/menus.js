@@ -70,6 +70,13 @@ Menus.prototype._setupActions = function (prompter) {
         $('*[data-action="startPrompter"]', e.data._self.target).removeClass('hide');
         $('*[data-action="pausePrompter"]', e.data._self.target).addClass('hide');
     });
+
+    $('*[data-action="setScrollingSpeed"]', this.target).val(prompter.textarea.settings.speedFactor);
+    $(this.target).on('input', '*[data-action="setScrollingSpeed"]', {_self: this, prompter: prompter}, function (e) {
+        var value = $(this).val();
+        $('*[data-action="setScrollingSpeed"]', e.data._self.target).val(value);
+        prompter.textarea.changeSpeedFactor(value);
+    });
 };
 
 Menus.prototype.autoHide = function (state) {

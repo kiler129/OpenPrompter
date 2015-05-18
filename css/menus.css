@@ -26,6 +26,11 @@
     float: none;
 }
 
+#menu .column input[type="range"] {
+    height: 85%;
+    width: 80%;
+}
+
 #menu .column {
     width: 33.3%;
     height: 100%;
