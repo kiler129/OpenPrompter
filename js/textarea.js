@@ -49,31 +49,38 @@ Textarea.prototype.loadText = function (text) {
     $(this.target).html(text);
 };
 
-Textarea.prototype.start = function () {
-    this.pause();
-
+Textarea.prototype._setupAnimation = function (finishCallback) {
     $(this.target).animate(
         {
             scrollTop: this.target.scrollHeight - $(this.target).height()
         },
         this._getScrollTime(),
         'linear',
-        function () {
-            document.dispatchEvent(new Event('textarea.stop'));
-        }
+        finishCallback
     );
+};
 
+Textarea.prototype._finishAnimation = function () {
+    document.dispatchEvent(new Event('textarea.stop'));
+};
+
+Textarea.prototype._stopAnimation = function() {
+    $(this.target).stop(true);
+};
+
+Textarea.prototype.start = function () {
+    this.pause();
+    this._setupAnimation(this._finishAnimation);
     document.dispatchEvent(new Event('textarea.start'));
 };
 
 Textarea.prototype.pause = function () {
-    $(this.target).stop(true);
-
+    this._stopAnimation();
     document.dispatchEvent(new Event('textarea.pause'));
 };
 
 Textarea.prototype.stop = function () {
-    $(this.target).stop(true);
+    this._stopAnimation();
     $(this.target).animate({scrollTop: 0}, 0);
 
     document.dispatchEvent(new Event('textarea.stop'));
